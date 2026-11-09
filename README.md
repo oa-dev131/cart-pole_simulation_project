@@ -1,42 +1,46 @@
-# Cart-Pole Numerical Simulation and Control Engine
+Cart-Pole Numerical Simulation and Control Engine
+Final project for the Introduction to Numerical Algorithms course at BME.
 
-Welcome to our final project repository for the **Introduction to Numerical Algorithms** course at BME! 
+Team Members: Omer Awan (FNQC14) & Adil Muhammad (BU9TKF)
 
-- **Team Members:** Omer Awan (FNQC14) & Adil Muhammad (BU9TKF)
-- **Repository:** INM-Final-Project_T3_P10
+Project Overview
+This project models and simulates an inverted pendulum on a cart (cart-pole system), a classic problem in dynamics and control engineering.
 
----
+The system is naturally unstable, meaning the pendulum will fall unless the cart moves appropriately to keep it balanced. Our goal is to model the system, solve its equations of motion numerically, analyze its stability, and investigate control strategies.
 
-## What is this project?
-In this project, we are modeling and simulating a classic control problem: an **inverted pendulum on a cart (the cart-pole system)**. Imagine a pole balanced on top of a moving cart. Because it is underactuated and naturally unstable, keeping it upright requires clever physics and numerical algorithms. 
+Methods Used
+The project focuses on three main numerical topics:
 
-We built everything from scratch in Python (using NumPy, SciPy, and Matplotlib) to fully understand how numerical methods work under the hood, without relying on black-box libraries.
+Euler Method
+A simple numerical integration method used as a baseline for comparison.
 
----
+Runge-Kutta 4th Order (RK4)
+A more accurate numerical method used to solve the nonlinear equations of motion.
 
-## What methods are we using?
-To satisfy our course requirements, our project implements three main numerical techniques:
-1. **Coupled Non-Linear ODE Integration (Runge-Kutta 4th Order / RK4):** Step-by-step numerical integration to solve the equations of motion for the cart's position and the pole's angle over time.
-2. **Jacobian Matrix Linearization & Eigenvalues:** Analyzing the stability of the system near its unstable upright equilibrium point using linear algebra.
-3. **Numerical Energy-Shaping Control:** Controlling the system's total mechanical energy to swing the pendulum up from hanging down and stabilize it at the top.
+Jacobian Linearization & Eigenvalue Analysis
+Used to study the stability of the system near its upright equilibrium.
 
----
+Additional Extension: Energy-Shaping Control for swinging the pendulum upright and stabilizing it.
 
-## Project Structure
-Here is how our code is organized so you can easily navigate it:
-
-```text
+Project Goals
+Derive the cart-pole equations of motion.
+Simulate the system using Euler and RK4 methods.
+Compare the accuracy and stability of both methods.
+Analyze system stability using linearization and eigenvalues.
+Implement an energy-based control strategy.
+Visualize and interpret the results using plots.
+Project Structure
 INM-Final-Project_T3_P10/
 │
-├── README.md               # You are reading this right now!
-├── requirements.txt        # Python package dependencies
-├── main.py                 # Main script to run simulations and generate plots
+├── README.md
+├── requirements.txt
+├── main.py
 │
 ├── src/
-│   ├── physics.py          # Lagrangian equations of motion and state-space setup
-│   ├── solvers.py          # Custom numerical integration solvers (Euler & RK4)
-│   ├── stability.py        # Jacobian matrix calculations and eigenvalue analysis
-│   └── control.py          # Energy-shaping and feedback control logic
+│   ├── physics.py
+│   ├── solvers.py
+│   ├── stability.py
+│   └── control.py
 │
 └── visualization/
-    └── plots.py            # Code for generating time-series, phase portraits, and energy plots
+    └── plots.py
