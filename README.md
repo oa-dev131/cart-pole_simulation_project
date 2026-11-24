@@ -1,46 +1,59 @@
-Cart-Pole Numerical Simulation and Control Engine
-Final project for the Introduction to Numerical Algorithms course at BME.
+# Cart-Pole Numerical Simulation and Stability Analysis
 
-Team Members: Omer Awan (FNQC14) & Adil Muhammad (BU9TKF)
+Final project for **Introduction to Numerical Algorithms** at BME.
 
-Project Overview
-This project models and simulates an inverted pendulum on a cart (cart-pole system), a classic problem in dynamics and control engineering.
+**Team Members:**
+* Omer Awan (FNQC14)
+* Adil Muhammad (BU9TKF)
 
-The system is naturally unstable, meaning the pendulum will fall unless the cart moves appropriately to keep it balanced. Our goal is to model the system, solve its equations of motion numerically, analyze its stability, and investigate control strategies.
+---
 
-Methods Used
-The project focuses on three main numerical topics:
+## Project Overview
+This project models and simulates an inverted pendulum on a cart (cart-pole system). Because the upright position is naturally unstable, the pendulum falls unless the cart moves to balance it.
 
-Euler Method
-A simple numerical integration method used as a baseline for comparison.
+Our goal is to derive the equations of motion, solve them numerically, test how step size affects accuracy and stability, analyze local stability around equilibrium points, and examine basic stabilization.
 
-Runge-Kutta 4th Order (RK4)
-A more accurate numerical method used to solve the nonlinear equations of motion.
+---
 
-Jacobian Linearization & Eigenvalue Analysis
-Used to study the stability of the system near its upright equilibrium.
+## Methods Used
+1. **Euler Method:** A simple first-order numerical solver used as a baseline to see how step size affects accuracy and energy drift.
+2. **Runge-Kutta 4th Order (RK4):** A higher-order numerical solver used for accurate simulation of the nonlinear equations of motion.
+3. **Jacobian Linearization & Eigenvalue Analysis:** Linearizes the system around equilibrium points (hanging down and standing up) and uses eigenvalues to check local stability.
+4. **Linear Stabilization Control:** A basic feedback controller around the upright position to keep the pole balanced for small deviations.
 
-Additional Extension: Energy-Shaping Control for swinging the pendulum upright and stabilizing it.
+---
 
-Project Goals
-Derive the cart-pole equations of motion.
-Simulate the system using Euler and RK4 methods.
-Compare the accuracy and stability of both methods.
-Analyze system stability using linearization and eigenvalues.
-Implement an energy-based control strategy.
-Visualize and interpret the results using plots.
-Project Structure
+## What We Will Test and Compare
+* **Step size and accuracy:** Running Euler and RK4 with different time steps (for example, dt = 0.1, 0.01, and 0.001 s) and comparing how fast the error shrinks.
+* **Energy behavior:** Checking whether total mechanical energy stays constant when there is no friction and no push force on the cart, or drifts due to numerical error.
+* **Linear vs. nonlinear behavior:** Comparing the linearized model against the full nonlinear simulation for small vs. larger tilt angles.
+
+---
+
+## Project Structure
 INM-Final-Project_T3_P10/
-│
 ├── README.md
 ├── requirements.txt
 ├── main.py
-│
 ├── src/
 │   ├── physics.py
 │   ├── solvers.py
 │   ├── stability.py
 │   └── control.py
-│
 └── visualization/
     └── plots.py
+
+---
+
+## How to Run
+1. Install dependencies:
+   pip install -r requirements.txt
+2. Run the main script:
+   python main.py
+
+---
+
+## Task Breakdown
+* **Omer Awan (FNQC14):** Equations of motion (`src/physics.py`), linearization and eigenvalues (`src/stability.py`), and stabilization logic (`src/control.py`).
+* **Adil Muhammad (BU9TKF):** Euler and RK4 solvers (`src/solvers.py`), step-size and energy tests, and plots (`visualization/plots.py`).
+* **Together:** Connecting everything in `main.py`, checking results, and preparing the presentation.
